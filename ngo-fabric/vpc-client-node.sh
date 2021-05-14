@@ -24,8 +24,8 @@ VPCENDPOINTSERVICENAME=$(aws managedblockchain get-network --region $REGION --ne
 echo Searching for existing keypair named $NETWORKNAME-keypair
 keyname=$(aws ec2 describe-key-pairs --key-names $NETWORKNAME-keypair --region $REGION --query 'KeyPairs[0].KeyName' --output text)
 if  [[ "$keyname" == "$NETWORKNAME-keypair" ]]; then
-    echo Keypair $NETWORKNAME-keypair already exists. Please choose another keypair name by editing this script
-    exit 1
+    echo Keypair $NETWORKNAME-keypair already exists. Recreating ...
+    aws ec2 delete-key-pair --key-name $NETWORKNAME-keypair
 fi
  
 echo Creating a keypair named $NETWORKNAME-keypair. The .pem file will be in your $HOME directory
