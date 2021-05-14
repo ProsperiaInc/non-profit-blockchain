@@ -9,7 +9,7 @@ will use the Fabric client node to administer the Fabric network
 * From the Fabric client node, create a Fabric channel, install and instantiate chaincode, and 
 query and invoke transactions on the Fabric network
 
-## Pre-requisites - AWS Cloud9
+## Step 1 - Use Cloud9 to run inital network creation script
 We will use AWS Cloud9 to provide a Linux terminal which has the AWS CLI already installed.
 
 Note: If you have an existing Cloud9 environment left over from this tutorial that you would like to delete, run
@@ -30,44 +30,18 @@ cd ~
 git clone https://github.com/ProsperiaInc/non-profit-blockchain.git
 ```
 
-Update your AWS CLI to the latest version.
-
+Update the AWS CLI and create, run the cloudformation templates that automatically stand up a network, member organization and peer node
 ```
-sudo pip install awscli --upgrade
-```
-
-## Step 1 - Create the Hyperledger Fabric blockchain network
-Use Cloud9 to create a Fabric network using the provided CloudFormation template.
-
-In your Cloud9 terminal window:
-
-```
-export REGION=us-east-1
-export STACKNAME=non-profit-amb
-cd ~/non-profit-blockchain/ngo-fabric
-./amb.sh
+cd ~
+./non-profit-blockchain/ngo-fabric/tutorial-scripts/step-1.sh 
 ```
 
-The CloudFormation template, `amb.yaml`, expects a number of parameters. All of these have default values for the purpose
-of this workshop, but can be overridden in the script `amb.sh`. The template defaults to creating a 'Starter' Fabric network
-with a single small peer node. This would not be suitable for a production network, which would need a 'Standard' Fabric
-network with multiple peer nodes spread across AZs.
+When the following command returns CREATED for network name `ngo` you are ready to move on to the next step,
+```
+aws managedblockchain list-networks
+```
 
-## Step 2 - Check the network is AVAILABLE
-Before continuing, check to see that your Fabric network has been created and is Available. It does take quite a while
-to create the network, so grab a coffee in the meantime. You will need an Available network before continuining with the 
-next steps.
-
-You can check the status of your network in two places:
-
-* In the AWS CloudFormation Console: https://console.aws.amazon.com/cloudformation. Check the resources for your stack. You
-are waiting for the member and the peer node to be CREATE_COMPLETE
-* In the Amazon Managed Blockchain Console: https://console.aws.amazon.com/managedblockchain. For you network, you are waiting
-for the network, the member and the member's peer node to be Available.
-
-Once your Managed Blockchain network is available, move on to the next step.
-
-## Step 3 - Create the Fabric client node
+## Step 2 - Create the Fabric client node
 In your Cloud9 terminal window.
 
 Create the Fabric client node, which will host the Fabric CLI. You will use the CLI to administer
@@ -84,9 +58,8 @@ This is caused by the script creating a keypair, and ensuring it does not overwr
 In Cloud9:
 
 ```
-export REGION=us-east-1
-cd ~/non-profit-blockchain/ngo-fabric
-./vpc-client-node.sh
+cd ~
+./non-profit-blockchain/ngo-fabric/tutorial-scripts/step-2.sh 
 ```
 
 Check the progress in the AWS CloudFormation console and wait until the stack is CREATE COMPLETE.
