@@ -12,6 +12,12 @@ query and invoke transactions on the Fabric network
 ## Pre-requisites - AWS Cloud9
 We will use AWS Cloud9 to provide a Linux terminal which has the AWS CLI already installed.
 
+Note: If you have an existing Cloud9 environment left over from this tutorial that you would like to delete, run
+```
+aws cloud9  list-environments # Note environmentID of existing cloud9 environment
+aws cloud9 delete-environment --environment-id <environmentID> 
+```
+
 1. Spin up a [Cloud9 IDE](https://us-east-1.console.aws.amazon.com/cloud9/home?region=us-east-1) from the AWS console.
 In the Cloud9 console, click 'Create Environment'. Using 'us-east-1' for the region will be easier.
 2. Provide a name for your environment, e.g. fabric-c9, and click **Next Step**
