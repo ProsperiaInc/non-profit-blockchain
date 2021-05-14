@@ -16,3 +16,4 @@ cd ~/non-profit-blockchain/ngo-fabric
 ./amb.sh
 
 echo '... Organization network, member and peer have been created!'
+cd ~

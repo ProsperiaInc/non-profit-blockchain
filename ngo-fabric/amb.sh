@@ -13,6 +13,9 @@
 # express or implied. See the License for the specific language governing 
 # permissions and limitations under the License.
 
+echo Deleting any old stakcs
+aws cloudformation delete-stack --stack-name $STACKNAME
+
 echo Creating Amazon Managed Blockchain network, member and peer node
 aws cloudformation deploy --stack-name $STACKNAME --template-file amb.yaml \
 --parameter-overrides PeerNodeAvailabilityZone=${REGION}a \
