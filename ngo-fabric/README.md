@@ -40,6 +40,8 @@ When the following command returns CREATED for network name `ngo` you are ready 
 ```
 aws managedblockchain list-networks
 ```
+This will take about 30 minutes so feel free to step away and return.
+
 
 ## Step 2 - Create the Fabric client node
 In your Cloud9 terminal window.
