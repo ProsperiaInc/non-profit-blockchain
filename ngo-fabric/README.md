@@ -118,6 +118,8 @@ You can do all of this in a single script,
 ./non-profit-blockchain/ngo-fabric/tutorial-scripts/step-3.sh
 ```
 
+The `simple` chaincode example queries two elements, `a` and `b` and sets them both to a value of 90. When the this script is finished the value of `90` should be displayed.
+
 ## Move on to Part 2
 The workshop instructions can be found in the README files in parts 1-4:
 
