@@ -68,7 +68,7 @@ Check the progress in the AWS CloudFormation console and wait until the stack is
 You will find some useful information in the Outputs tab of the CloudFormation stack once the stack
 is complete. We will use this information in later steps.
 
-## Step 4 - Prepare the Fabric client node and enroll an identity
+## Step 3 - Prepare the Fabric client node and enroll an identity
 On the Fabric client node.
 
 Prior to executing any commands on the Fabric client node, you will need to export ENV variables
@@ -107,7 +107,7 @@ You can do all of this in a single script,
 ./non-profit-blockchain/ngo-fabric/tutorial-scripts/step-3.sh
 ```
 
-## Step 5 - Install chaincode on your peer node
+## Step 4 - Install chaincode on your peer node
 On the Fabric client node.
 
 Finally, we want to install, instanstiate (on the network) chaincode. Then we want to do a transaction to verify that it works as expected.
