@@ -75,15 +75,17 @@ Prior to executing any commands on the Fabric client node, you will need to expo
 that provide a context to Hyperledger Fabric. These variables will tell the client node which Fabric
 network to use, which peer node to interact with, which TLS certs to use, etc. 
 
-From Cloud9, SSH into the Fabric client node. The key (i.e. the .PEM file) should be in your home directory. 
-The DNS of the Fabric client node EC2 instance can be found in the output of the CloudFormation stack you 
-created in Step 3 above.
+From Cloud9, SSH into the Fabric client node. The key (i.e. the .PEM file) should be in your home directory. We can grab the DNS name of the client node with the command below,
 
-Answer 'yes' if prompted: `Are you sure you want to continue connecting (yes/no)`
+```
+export EC2URL=`aws cloudformation describe-stacks --stack-name "ngo-fabric-client-node" | jq -r '.Stacks[0].Outputs[] | select (.OutputKey == "EC2URL").OutputValue'` 
+```
+
+And then we ssh to the client node; answer 'yes' if prompted: `Are you sure you want to continue connecting (yes/no)`
 
 ```
 cd ~
-ssh ec2-user@<dns of EC2 instance> -i ~/<Fabric network name>-keypair.pem
+ssh ec2-user@$EC2URL -i ~/ngo-keypair.pem
 ```
 
 Clone the repo:
