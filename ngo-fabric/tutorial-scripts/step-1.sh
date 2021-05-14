@@ -4,7 +4,6 @@ echo '[Step 1 - includes tutorial prereq and step 1] '
 
 echo '... Cloning this tutorial and setting up your CLI environment'
 cd ~
-git clone https://github.com/ProsperiaInc/non-profit-blockchain.git
 sudo pip install awscli --upgrade
 
 echo '... Cloning this tutorial and setting up your CLI environment'
