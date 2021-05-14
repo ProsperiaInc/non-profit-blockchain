@@ -36,9 +36,9 @@ cd ~
 ./non-profit-blockchain/ngo-fabric/tutorial-scripts/step-1.sh 
 ```
 
-When the following command returns CREATED for network name `ngo` you are ready to move on to the next step,
+When the following command returns AVAILABLE you are ready to move on to the next step,
 ```
-aws managedblockchain list-networks
+aws managedblockchain list-networks --query 'Networks[?Name==`ngo`].Status' | grep 'AVAILABLE'
 ```
 This will take about 30 minutes so feel free to step away and return.
 
